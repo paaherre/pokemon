@@ -1,0 +1,16 @@
+.navbar {
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+    width: 20%;
+}
+
+a {
+    text-decoration: none;
+    font-size: medium;
+    font-weight: 500;
+    color: black;
+    margin-top: 5px;
+}
