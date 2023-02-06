@@ -1,54 +1,29 @@
 import React, { useState, useEffect } from "react";
+import PokemonCard from "../card/PokemonCard";
 
 function Home() {
+
     const [pokemonList, setPokemonList] = useState([]);
-    const [details, setDetails] = useState([]);
-
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
-        fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
-            .then((response) => {
-                return response.json()
+        async function loadPokemon() {
+            const api = await fetch('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0');
+            const data = await api.json();
+            const pokemones = await data.results.map(async pokemon => {
+                const result = await fetch(pokemon.url)
+                const resp = await result.json()
+                return resp;
             })
-
-            .then((poke) => {
-                setPokemonList(poke.results);
-            })
-    }, []);
-
-    useEffect(() => {
-        pokemonList.map(pokemon => {
-            return (fetch(pokemon.url)
-                .then(response => response.json())
-                .then(poke => {
-                    setDetails([...details, {
-                        name: pokemon.name,
-                        number: pokemonList.indexOf(pokemon) + 1,
-                        type: poke.types,
-                        img: poke.sprites.front_default ? poke.sprites.front_default : "",
-                    }])
-                }))
-        })
-
+            const results = await Promise.all(pokemones)
+            setPokemonList(results.filter(poke => poke.is_default && poke.sprites.front_default))
+            setLoading(false)
+        }
+        loadPokemon();
     }, [])
-
-    console.log(details);
 
     return (
         <>
-            {/*             {details.length && details.map(pokemon => {
-                return (<div className="card">
-                    <div className="card-img">
-                        <img src={pokemon.img} alt="" />
-                    </div>
-                    <div className="card-text">
-                        <li> nombre: {pokemon.name}</li>
-                        <li> numero: {pokemon.number}</li>
-
-                    </div>
-                </div>
-                )
-            })} */}
-
+            {loading ? <h1>Loading</h1> : pokemonList.map(pokemon => <PokemonCard pokemon={pokemon} />)}
         </>
     )
 }
