@@ -25,7 +25,6 @@ function Home() {
         loadPokemon();
     }, [])
 
-
     return (
         <>
             <div className="home">
