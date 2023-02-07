@@ -1,0 +1,230 @@
+/*
+    Auther: Abdelrhman Said
+*/
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:focus,
+*:active {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.wrapper {
+    display: inline-flex;
+    list-style: none;
+}
+
+.wrapper .pokeType {
+    position: relative;
+    background: #ffffff;
+    border-radius: 50%;
+    padding: 15px;
+    margin: 1px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 12px;
+    background: #ffffff;
+    color: #ffffff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #ffffff;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper .pokeType:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.wrapper .pokeType:hover span,
+.wrapper .pokeType:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.wrapper .normal:hover,
+.wrapper .normal:hover .tooltip,
+.wrapper .normal:hover .tooltip::before {
+    background: #A8A878;
+    border: 1px solid #6D6D4E;
+    color: #ffffff;
+}
+
+.wrapper .fighting:hover,
+.wrapper .fighting:hover .tooltip,
+.wrapper .fighting:hover .tooltip::before {
+    background: #C03028;
+    border: 1px solid #7D1F1A;
+    color: #ffffff;
+}
+
+.wrapper .flying:hover,
+.wrapper .flying:hover .tooltip,
+.wrapper .flying:hover .tooltip::before {
+    background: #A890F0;
+    border: 1px solid #6D5E9C;
+    color: #ffffff;
+}
+
+.wrapper .poison:hover,
+.wrapper .poison:hover .tooltip,
+.wrapper .poison:hover .tooltip::before {
+    background: #A040A0;
+    border: 1px solid #682A68;
+    color: #ffffff;
+}
+
+.wrapper .ground:hover,
+.wrapper .ground:hover .tooltip,
+.wrapper .ground:hover .tooltip::before {
+    background: #E0C068;
+    border: 1px solid #927D44;
+    color: #ffffff;
+}
+
+.wrapper .rock:hover,
+.wrapper .rock:hover .tooltip,
+.wrapper .rock:hover .tooltip::before {
+    background: #B8A038;
+    border: 1px solid #786824;
+    color: #ffffff;
+}
+
+.wrapper .bug:hover,
+.wrapper .bug:hover .tooltip,
+.wrapper .bug:hover .tooltip::before {
+    background: #A8B820;
+    border: 1px solid #6D7815;
+    color: #ffffff;
+}
+
+.wrapper .ghost:hover,
+.wrapper .ghost:hover .tooltip,
+.wrapper .ghost:hover .tooltip::before {
+    background: #705898;
+    border: 1px solid #493963;
+    color: #ffffff;
+}
+
+.wrapper .steel:hover,
+.wrapper .steel:hover .tooltip,
+.wrapper .steel:hover .tooltip::before {
+    background: #B8B8D0;
+    border: 1px solid #787887;
+    color: #ffffff;
+}
+
+.wrapper .fire:hover,
+.wrapper .fire:hover .tooltip,
+.wrapper .fire:hover .tooltip::before {
+    background: #F08030;
+    border: 1px solid #9C531F;
+    color: #ffffff;
+}
+
+.wrapper .water:hover,
+.wrapper .water:hover .tooltip,
+.wrapper .water:hover .tooltip::before {
+    background: #6890F0;
+    border: 1px solid #445E9C;
+    color: #ffffff;
+}
+
+.wrapper .grass:hover,
+.wrapper .grass:hover .tooltip,
+.wrapper .grass:hover .tooltip::before {
+    background: #78C850;
+    border: 1px solid #4E8234;
+    color: #ffffff;
+}
+
+.wrapper .electric:hover,
+.wrapper .electric:hover .tooltip,
+.wrapper .electric:hover .tooltip::before {
+    background: #F8D030;
+    border: 1px solid #A1871F;
+    color: #ffffff;
+}
+
+.wrapper .psychic:hover,
+.wrapper .psychic:hover .tooltip,
+.wrapper .psychic:hover .tooltip::before {
+    background: #F85888;
+    border: 1px solid #A13959;
+    color: #ffffff;
+}
+
+.wrapper .ice:hover,
+.wrapper .ice:hover .tooltip,
+.wrapper .ice:hover .tooltip::before {
+    background: #98D8D8;
+    border: 1px solid #638D8D;
+    color: #ffffff;
+}
+
+.wrapper .dragon:hover,
+.wrapper .dragon:hover .tooltip,
+.wrapper .dragon:hover .tooltip::before {
+    background: #7038F8;
+    border: 1px solid #4924A1;
+    color: #ffffff;
+}
+
+.wrapper .dark:hover,
+.wrapper .dark:hover .tooltip,
+.wrapper .dark:hover .tooltip::before {
+    background: #705848;
+    border: 1px solid #49392F;
+    color: #ffffff;
+}
+
+.wrapper .dark:hover,
+.wrapper .dark:hover .tooltip,
+.wrapper .dark:hover .tooltip::before {
+    background: #705848;
+    border: 1px solid #49392F;
+    color: #ffffff;
+}
+
+.wrapper .fairy:hover,
+.wrapper .fairy:hover .tooltip,
+.wrapper .fairy:hover .tooltip::before {
+    background: #EE99AC;
+    border: 1px solid #9B6470;
+    color: #ffffff;
+}
