@@ -1,7 +1,7 @@
 import PokeType from "../pokeType/PokeType";
 import "./PokemonCard.css"
 
-const PokemonCard = ({ pokemon, idx }) => {
+const PokemonCard = ({ pokemon }) => {
     return (
         <div className="card m-1">
             <img src={pokemon.sprites.front_default} className="card-img-top" alt={`pokemonImg ${pokemon.name}`}></img>

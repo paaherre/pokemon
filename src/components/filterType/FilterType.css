@@ -1,0 +1,20 @@
+.unChecked {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.checked {
+    width: 30px;
+    height: 30px;
+    -webkit-filter: grayscale(0);
+    filter: grayscale(0);
+}
+
+.filterCheckbox {
+    width: 40px;
+    height: 40px;
+}
+
+input {
+    display: none;
+}

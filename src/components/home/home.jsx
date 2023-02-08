@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PokemonCard from "../card/PokemonCard";
+import FilterType from "../filterType/FilterType"
+import gifLoading from '../../assets/img/ash-loading.gif'
 import './home.css'
 
 function Home() {
@@ -14,7 +16,7 @@ function Home() {
 
     useEffect(() => {
         async function loadPokemon() {
-            const api = await fetch(apiUrl + 'pokemon?limit=10000&offset=0');
+            const api = await fetch(apiUrl + 'pokemon?limit=500&offset=0');
             const data = await api.json();
             const pokemones = await data.results.map(async pokemon => {
                 const result = await fetch(pokemon.url)
@@ -75,10 +77,9 @@ function Home() {
                         <div >Filtrar por tipo: 🔽</div>
                         <div className="dropdown-content">
                             {pokeTypes.map((type, idx) => {
-                                return (<label>
-                                    <input type="checkbox" name="" id="" onChange={e => pokeTypesFilter(e, idx)} />
-                                    <img src={require('../../assets/icons/' + type.name + '.webp')} alt="" />
-                                </label>)
+                                return (
+                                    <FilterType pokeTypesFilter={pokeTypesFilter} type={type} idx={idx} key={idx} />
+                                )
                             })
                             }
                         </div>
@@ -86,7 +87,7 @@ function Home() {
                 </div>
                 <div className="d-flex flex-wrap justify-content-evenly">
                     {
-                        loading ? <h1>Loading...</h1> : render().map((pokemon, idx) => <PokemonCard pokemon={pokemon} idx={idx} />)
+                        loading ? <img src={gifLoading} alt="" /> : render().map((pokemon, idx) => <PokemonCard pokemon={pokemon} key={idx} />)
                     }
                 </div>
             </div>
