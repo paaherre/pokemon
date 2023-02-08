@@ -6,7 +6,7 @@ function Home() {
 
     const [pokemonList, setPokemonList] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [pokeFilter, setPokeFilter] = useState("");
+    const [pokeFilterName, setPokeFilterName] = useState("");
     const [pokeTypes, setPokeTypes] = useState([]);
     const [filteredTypes, setFilteredTypes] = useState([]);
 
@@ -14,7 +14,7 @@ function Home() {
 
     useEffect(() => {
         async function loadPokemon() {
-            const api = await fetch(apiUrl + 'pokemon?limit=200&offset=0');
+            const api = await fetch(apiUrl + 'pokemon?limit=10000&offset=0');
             const data = await api.json();
             const pokemones = await data.results.map(async pokemon => {
                 const result = await fetch(pokemon.url)
@@ -46,20 +46,29 @@ function Home() {
         }
     }
 
-    /*     async function renderList(){
-            if( filteredTypes.length ){
-                const api = await fetch()
-            }
-            pokemonList.filter(poke => poke.name.includes(pokeFilter))
-        } */
+    function render() {
+        const pokemones = [...pokemonList].filter(poke => poke.name.includes(pokeFilterName))
+        const resp = [];
+        if (filteredTypes.length > 0) {
+            filteredTypes.forEach(fTypes => {
+                pokemones.forEach(poke => {
+                    poke.types.forEach(types => {
+                        if (fTypes.name === types.type.name) {
+                            resp.push(poke)
+                        }
+                    })
+                })
+            })
+            return resp;
+        } else return pokemones;
+    }
 
-    console.log(filteredTypes)
     return (
         <>
             <div className="home">
                 <div className="header p-1 sticky-top">
                     <div className="input-group searchBar">
-                        <input type="text" className="form-control" placeholder="Pokemon" aria-label="Pokemon" aria-describedby="basic-addon1" onChange={e => setPokeFilter(e.target.value.toLowerCase())}></input>
+                        <input type="text" className="form-control" placeholder="Pokemon" aria-label="Pokemon" aria-describedby="basic-addon1" onChange={e => setPokeFilterName(e.target.value.toLowerCase())}></input>
                         <span className="input-group-text" id="basic-addon2">🔍</span>
                     </div>
                     <div className="typeFilter mt-1 dropdown">
@@ -77,7 +86,7 @@ function Home() {
                 </div>
                 <div className="d-flex flex-wrap justify-content-evenly">
                     {
-                        loading ? <h1>Loading</h1> : pokemonList.map(pokemon => <PokemonCard pokemon={pokemon} />)
+                        loading ? <h1>Loading...</h1> : render().map((pokemon, idx) => <PokemonCard pokemon={pokemon} idx={idx} />)
                     }
                 </div>
             </div>

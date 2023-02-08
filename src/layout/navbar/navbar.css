@@ -1,10 +1,12 @@
 .navbar {
     background-color: antiquewhite;
+    position: sticky;
+    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     height: 100vh;
-    width: 20%;
+    width: 200px;
 }
 
 a {

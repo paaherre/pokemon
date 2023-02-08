@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 function navbar() {
     return (
         <div className="d-flex flex-row">
-            <div className="navbar fixed-top">
+            <div className="navbar">
                 <h1 className="mt-3">PokeApp</h1>
                 <div className="d-flex flex-column mt-5 align-items-start">
                     <a href="/"><img src={pokeballClose} alt="" /> Pokemon List</a>
@@ -13,7 +13,7 @@ function navbar() {
                     <a href="https://github.com/paaherre/pokemon" target="_blank" rel="noreferrer"><img src={pokeballClose} alt="" /> Sobre nosotros</a>
                 </div>
             </div>
-            <section>
+            <section className="flex-grow-1">
                 <Outlet></Outlet>
             </section>
         </div>
