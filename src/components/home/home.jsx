@@ -68,7 +68,7 @@ function Home() {
     return (
         <>
             <div className="home">
-                <div className="header p-1 sticky-top">
+                <div className="header p-1 sticky-top mb-3">
                     <div className="input-group searchBar">
                         <input type="text" className="form-control" placeholder="Pokemon" aria-label="Pokemon" aria-describedby="basic-addon1" onChange={e => setPokeFilterName(e.target.value.toLowerCase())}></input>
                         <span className="input-group-text" id="basic-addon2">🔍</span>
