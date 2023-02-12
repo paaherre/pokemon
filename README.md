@@ -3,7 +3,7 @@
 ## Intro:
 
 Este proyecto fue realizado para un challenge técnico.
-Se deben mostrar el listado de Pokemóns con una imagen, nombre, tipos y número. De incluir un filtro por tipo en la parte superior, también se le agregó un buscador por nombre.
+Se deben mostrar el listado de Pokemóns con una imagen, nombre, tipos y número. Debe incluir un filtro por tipo en la parte superior, también se le agregó un buscador por nombre.
 
 ## Instalación:
 
